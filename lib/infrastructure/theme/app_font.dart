@@ -6,6 +6,11 @@ class AppFont {
         fontWeight: FontWeight.w700,
       );
 
+  static TextStyle get headerBlack => const TextStyle(
+    fontSize: 19,
+    fontWeight: FontWeight.w700,
+  );
+
   static TextStyle get input => const TextStyle(
         fontSize: 11,
         fontWeight: FontWeight.w400,
