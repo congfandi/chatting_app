@@ -25,6 +25,9 @@ class Main extends StatelessWidget {
     return GetMaterialApp(
       initialRoute: initialRoute,
       getPages: Nav.routes,
+      theme: ThemeData(
+        fontFamily: "Poppins",
+      ),
     );
   }
 }
