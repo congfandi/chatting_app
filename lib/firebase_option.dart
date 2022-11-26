@@ -67,7 +67,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '1005328208811',
     projectId: 'ngoding-chatting-app',
     storageBucket: 'ngoding-chatting-app.appspot.com',
-    iosClientId: '1005328208811-gcslbcg9tc9ugulsmgff3886qlm5offb.apps.googleusercontent.com',
+    iosClientId:
+        '1005328208811-gcslbcg9tc9ugulsmgff3886qlm5offb.apps.googleusercontent.com',
     iosBundleId: 'com.thengoding.chatting',
   );
 
@@ -77,7 +78,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '1005328208811',
     projectId: 'ngoding-chatting-app',
     storageBucket: 'ngoding-chatting-app.appspot.com',
-    iosClientId: '1005328208811-sl67jdobfjb4qqpbgsj6s9dr6pqi3jq8.apps.googleusercontent.com',
+    iosClientId:
+        '1005328208811-sl67jdobfjb4qqpbgsj6s9dr6pqi3jq8.apps.googleusercontent.com',
     iosBundleId: 'com.thengoding.chatting.chattingApp',
   );
 }
