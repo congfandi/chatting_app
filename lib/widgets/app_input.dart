@@ -5,8 +5,11 @@ import 'package:flutter/material.dart';
 class AppInput extends StatefulWidget {
   final String hint;
   TextEditingController? controller;
+  final Widget? prefixIcon;
 
-  AppInput({super.key, required this.hint, this.controller});
+  AppInput({Key? key, required this.hint, this.controller, this.prefixIcon})
+      : super(key: key);
+
   @override
   State<AppInput> createState() => _AppInputState();
 }
@@ -23,6 +26,7 @@ class _AppInputState extends State<AppInput> {
           hintStyle: AppFont.input.copyWith(
             color: AppColor.grey3,
           ),
+          prefixIcon: widget.prefixIcon,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15),
             borderSide: const BorderSide(

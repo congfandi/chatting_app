@@ -46,5 +46,15 @@ class Nav {
       page: () => const ForgotPasswordScreen(),
       binding: ForgotPasswordControllerBinding(),
     ),
+    GetPage(
+      name: Routes.LIST_CHAT,
+      page: () => const ListChatScreen(),
+      binding: ListChatControllerBinding(),
+    ),
+    GetPage(
+      name: Routes.DETAIL_CHAT,
+      page: () => const DetailChatScreen(),
+      binding: DetailChatControllerBinding(),
+    ),
   ];
 }
