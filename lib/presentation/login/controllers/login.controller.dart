@@ -14,6 +14,10 @@ class LoginController extends GetxController {
     authSocialService.signInWithGoogle();
   }
 
+  handleFacebookLogin() async {
+    authSocialService.signInWithFacebook();
+  }
+
   btnHandleLogin() async {
     if (_singInValidator()) {
       Get.dialog(
