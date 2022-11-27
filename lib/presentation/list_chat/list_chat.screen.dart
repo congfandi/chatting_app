@@ -13,6 +13,7 @@ class ListChatScreen extends GetView<ListChatController> {
 
   @override
   Widget build(BuildContext context) {
+    controller.getDataFireStore();
     return Scaffold(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
