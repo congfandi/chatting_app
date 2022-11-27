@@ -11,6 +11,11 @@ class AppFont {
     fontWeight: FontWeight.w700,
   );
 
+  static TextStyle get headerWhite => const TextStyle(
+    fontSize: 17,
+    fontWeight: FontWeight.w700,
+  );
+
   static TextStyle get subtitle => const TextStyle(
     fontSize: 13,
     fontWeight: FontWeight.w600,
