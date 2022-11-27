@@ -18,7 +18,7 @@ class AppFont {
 
   static TextStyle get subtitle => const TextStyle(
     fontSize: 13,
-    fontWeight: FontWeight.w600,
+    fontWeight: FontWeight.w400,
   );
 
   static TextStyle get input => const TextStyle(

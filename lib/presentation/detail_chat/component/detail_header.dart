@@ -17,9 +17,14 @@ class DetailHeader extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
       child: Row(
         children: [
-          const Icon(
-            Iconsax.arrow_left_2,
-            color: Colors.white,
+          GestureDetector(
+            onTap: (){
+              Navigator.pop(context);
+            },
+            child: const Icon(
+              Iconsax.arrow_left_2,
+              color: Colors.white,
+            ),
           ),
           12.widthBox,
           SvgPicture.asset(
