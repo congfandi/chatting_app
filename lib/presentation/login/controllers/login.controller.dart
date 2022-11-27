@@ -17,19 +17,21 @@ class LoginController extends GetxController {
         ),
         barrierDismissible: false,
       );
-      var userAuth = await auth.signInWithEmailAndPassword(
-          email: emailController.text, password: passwordController.text);
-      Get.back();
-      if (userAuth.user != null) {
-        debugPrint("Login Success ${userAuth.user.toString()}");
-        if (userAuth.user!.emailVerified) {
-          Get.offAll(Routes.HOME);
+      auth
+          .signInWithEmailAndPassword(
+              email: emailController.text, password: passwordController.text)
+          .catchError((err) {
+        Get.back();
+        Get.snackbar("Error", err.toString());
+      }).then((userAuth) {
+        Get.back();
+        if (userAuth.user != null) {
+          debugPrint("Login Success ${userAuth.user.toString()}");
+          Get.offAllNamed(Routes.LIST_CHAT);
         } else {
-          Get.snackbar("Error", "Please verify your email");
+          Get.snackbar("Error", "Email belum terdaftar");
         }
-      } else {
-        Get.snackbar("Error", "Email belum terdaftar");
-      }
+      });
     }
   }
 
@@ -43,5 +45,9 @@ class LoginController extends GetxController {
       return false;
     }
     return true;
+  }
+
+  void handleSignupButton() {
+    Get.toNamed(Routes.REGISTER);
   }
 }
