@@ -6,4 +6,6 @@ abstract class AuthSocialInterface {
   void signInWithFacebook();
 
   void signInWithApple();
+
+  void signOut();
 }

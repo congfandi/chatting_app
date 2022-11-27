@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import '../../config.dart';
 import '../../presentation/screens.dart';
 import 'bindings/controllers/controllers_bindings.dart';
+import 'middleware/auth_middleware.dart';
 import 'routes.dart';
 
 class EnvironmentsBadge extends StatelessWidget {
@@ -27,34 +28,44 @@ class EnvironmentsBadge extends StatelessWidget {
 class Nav {
   static List<GetPage> routes = [
     GetPage(
-      name: Routes.HOME,
-      page: () => const HomeScreen(),
-      binding: HomeControllerBinding(),
-    ),
-    GetPage(
       name: Routes.LOGIN,
       page: () => const LoginScreen(),
       binding: LoginControllerBinding(),
+      middlewares: [
+        AuthMiddleware(),
+      ]
     ),
     GetPage(
       name: Routes.REGISTER,
       page: () => const RegisterScreen(),
       binding: RegisterControllerBinding(),
+        middlewares: [
+          AuthMiddleware(),
+        ]
     ),
     GetPage(
       name: Routes.FORGOT_PASSWORD,
       page: () => const ForgotPasswordScreen(),
       binding: ForgotPasswordControllerBinding(),
+        middlewares: [
+          AuthMiddleware(),
+        ]
     ),
     GetPage(
       name: Routes.LIST_CHAT,
       page: () => const ListChatScreen(),
       binding: ListChatControllerBinding(),
+        middlewares: [
+          AuthMiddleware(),
+        ]
     ),
     GetPage(
       name: Routes.DETAIL_CHAT,
       page: () => const DetailChatScreen(),
       binding: DetailChatControllerBinding(),
+        middlewares: [
+          AuthMiddleware(),
+        ]
     ),
   ];
 }

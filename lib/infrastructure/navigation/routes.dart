@@ -6,7 +6,6 @@ class Routes {
   }
 
   static const FORGOT_PASSWORD = '/forgot-password';
-  static const HOME = '/home';
   static const LIST_CHAT = '/list-chat';
   static const LOGIN = '/login';
   static const REGISTER = '/register';

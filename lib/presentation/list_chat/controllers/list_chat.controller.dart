@@ -1,23 +1,21 @@
+import 'package:chatting_app/infrastructure/dal/services/auth_social_service.dart';
+import 'package:chatting_app/infrastructure/theme/app_color.dart';
 import 'package:get/get.dart';
 
 class ListChatController extends GetxController {
-  //TODO: Implement ListChatController
+  final AuthSocialService _authSocialService = AuthSocialService();
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+  handleBtnSignOut() {
+    Get.defaultDialog(
+      title: "Sign Out",
+      middleText: "Are you sure want to sign out?",
+      textConfirm: "Yes",
+      textCancel: "No",
+      confirmTextColor: AppColor.white,
+      cancelTextColor: AppColor.black,
+      onConfirm: () {
+        _authSocialService.signOut();
+      },
+    );
   }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }
