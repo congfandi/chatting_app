@@ -84,4 +84,13 @@ class AuthSocialService implements AuthSocialInterface {
       Get.offAllNamed(Routes.LIST_CHAT);
     });
   }
+
+  @override
+  void signOut() {
+    _firebaseAuth.signOut().then((value) {
+      Get.offAllNamed(Routes.LOGIN);
+    }).catchError((err) {
+      Get.snackbar("Error!", err.toString());
+    });
+  }
 }
