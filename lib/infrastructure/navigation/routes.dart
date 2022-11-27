@@ -2,7 +2,7 @@
 
 class Routes {
   static Future<String> get initialRoute async {
-    return LIST_CHAT;
+    return LOGIN;
   }
 
   static const FORGOT_PASSWORD = '/forgot-password';

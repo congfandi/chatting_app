@@ -1,23 +1,47 @@
+import 'package:chatting_app/infrastructure/navigation/routes.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class LoginController extends GetxController {
-  //TODO: Implement LoginController
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  FirebaseAuth auth = FirebaseAuth.instance;
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+  btnHandleLogin() async {
+    if (_singInValidator()) {
+      Get.dialog(
+        const Center(
+          child: CircularProgressIndicator(),
+        ),
+        barrierDismissible: false,
+      );
+      var userAuth = await auth.signInWithEmailAndPassword(
+          email: emailController.text, password: passwordController.text);
+      Get.back();
+      if (userAuth.user != null) {
+        debugPrint("Login Success ${userAuth.user.toString()}");
+        if (userAuth.user!.emailVerified) {
+          Get.offAll(Routes.HOME);
+        } else {
+          Get.snackbar("Error", "Please verify your email");
+        }
+      } else {
+        Get.snackbar("Error", "Email belum terdaftar");
+      }
+    }
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  bool _singInValidator() {
+    if (!emailController.text.isEmail) {
+      Get.snackbar("Error", "Email is not valid");
+      return false;
+    }
+    if (passwordController.text.length < 6) {
+      Get.snackbar("Error", "Password must be at least 6 characters");
+      return false;
+    }
+    return true;
   }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }
