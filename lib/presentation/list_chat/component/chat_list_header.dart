@@ -14,7 +14,7 @@ class ChatListHeader extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(left: 40, bottom: 11),
           child: Text(
-            'Chatting',
+          'Chatting',
             style: AppFont.headerBlack,
           ),
         ),
