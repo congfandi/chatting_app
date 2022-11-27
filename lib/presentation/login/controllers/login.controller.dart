@@ -1,6 +1,6 @@
+import 'package:chatting_app/infrastructure/dal/services/auth_social_service.dart';
 import 'package:chatting_app/infrastructure/navigation/routes.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -8,6 +8,19 @@ class LoginController extends GetxController {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   FirebaseAuth auth = FirebaseAuth.instance;
+  AuthSocialService authSocialService = AuthSocialService();
+
+  handleGoogleLogin() async {
+    authSocialService.signInWithGoogle();
+  }
+
+  handleFacebookLogin() async {
+    authSocialService.signInWithFacebook();
+  }
+
+  handleAppleLogin() async {
+    authSocialService.signInWithApple();
+  }
 
   btnHandleLogin() async {
     if (_singInValidator()) {
