@@ -27,7 +27,10 @@ class LoginSocialMedia extends StatelessWidget {
                 child: SvgPicture.asset(ImgString.googleLogo,
                     width: 40, height: 40)),
             37.widthBox,
-            SvgPicture.asset(ImgString.appleLogo, width: 40, height: 40),
+            GestureDetector(
+                onTap: controller.handleAppleLogin,
+                child: SvgPicture.asset(ImgString.appleLogo,
+                    width: 40, height: 40)),
             37.widthBox,
             GestureDetector(
               onTap: controller.handleFacebookLogin,

@@ -11,8 +11,19 @@ class AuthSocialService implements AuthSocialInterface {
 
   @override
   void signInWithApple() {
-    // TODO: implement signInWithApple
-    throw UnimplementedError();
+    Get.dialog(
+      const Center(
+        child: CircularProgressIndicator(),
+      ),
+      barrierDismissible: false,
+    );
+    _firebaseAuth.signInWithProvider(AppleAuthProvider()).catchError((err) {
+      Get.back();
+      Get.snackbar("Error", err.toString());
+    }).then((value) {
+      Get.back();
+      Get.offAllNamed(Routes.LIST_CHAT);
+    });
   }
 
   @override
@@ -23,11 +34,11 @@ class AuthSocialService implements AuthSocialInterface {
       ),
       barrierDismissible: false,
     );
-    _facebookAuth.login().then((result){
+    _facebookAuth.login().then((result) {
       switch (result.status) {
         case LoginStatus.success:
           final OAuthCredential facebookAuthCredential =
-          FacebookAuthProvider.credential(result.accessToken!.token);
+              FacebookAuthProvider.credential(result.accessToken!.token);
           _firebaseAuth
               .signInWithCredential(facebookAuthCredential)
               .then((value) {})
@@ -48,10 +59,10 @@ class AuthSocialService implements AuthSocialInterface {
           Get.snackbar("Error", "Login Failed");
           break;
         case LoginStatus.operationInProgress:
-        // TODO: Handle this case.
+          // TODO: Handle this case.
           break;
       }
-    }).catchError((err){
+    }).catchError((err) {
       Get.back();
       Get.snackbar("Error", err.toString());
     });
