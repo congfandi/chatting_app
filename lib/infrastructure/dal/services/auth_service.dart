@@ -1,11 +1,11 @@
-import 'package:chatting_app/domain/core/interfaces/auth_social_interfaces.dart';
+import 'package:chatting_app/domain/core/interfaces/auth_interfaces.dart';
 import 'package:chatting_app/infrastructure/navigation/routes.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:get/get.dart';
 
-class AuthSocialService implements AuthSocialInterface {
+class AuthService implements AuthInterface {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final FacebookAuth _facebookAuth = FacebookAuth.instance;
 
@@ -90,6 +90,49 @@ class AuthSocialService implements AuthSocialInterface {
     _firebaseAuth.signOut().then((value) {
       Get.offAllNamed(Routes.LOGIN);
     }).catchError((err) {
+      Get.snackbar("Error!", err.toString());
+    });
+  }
+
+  @override
+  User? getCurrentUser() {
+    return _firebaseAuth.currentUser;
+  }
+
+  @override
+  void signInEmail(String email, String password) {
+    Get.dialog(
+      const Center(
+        child: CircularProgressIndicator(),
+      ),
+      barrierDismissible: false,
+    );
+    _firebaseAuth
+        .signInWithEmailAndPassword(email: email, password: password)
+        .then((value) {
+      Get.back();
+      Get.offAllNamed(Routes.LIST_CHAT);
+    }).catchError((err) {
+      Get.back();
+      Get.snackbar("Error!", err.toString());
+    });
+  }
+
+  @override
+  void signUpEmail(String email, String password) {
+    Get.dialog(
+      const Center(
+        child: CircularProgressIndicator(),
+      ),
+      barrierDismissible: false,
+    );
+    _firebaseAuth
+        .createUserWithEmailAndPassword(email: email, password: password)
+        .then((value) {
+      Get.back();
+      Get.offAllNamed(Routes.LIST_CHAT);
+    }).catchError((err) {
+      Get.back();
       Get.snackbar("Error!", err.toString());
     });
   }
