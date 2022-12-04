@@ -1,3 +1,4 @@
+import 'package:chatting_app/domain/models/chat.dart';
 import 'package:chatting_app/utils/extension/box_extension.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +14,10 @@ class ListChatScreen extends GetView<ListChatController> {
 
   @override
   Widget build(BuildContext context) {
-    controller.getDataFireStore();
+    controller.getMessages().forEach((element) {
+      Chat chat = element.first;
+      print(chat.conversations?.first.message);
+    });
     return Scaffold(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
